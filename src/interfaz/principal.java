@@ -41,7 +41,7 @@ public class principal extends javax.swing.JFrame {
         txtResultado = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         cmdManual = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cmdAutomatico = new javax.swing.JButton();
         cmdRepetido = new javax.swing.JButton();
         cmdBorrar = new javax.swing.JButton();
         cmdCrear = new javax.swing.JButton();
@@ -94,15 +94,20 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel4.add(cmdManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 180, 40));
 
-        jButton2.setText("Llenado Automatico");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        cmdAutomatico.setText("Llenado Automatico");
+        cmdAutomatico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cmdAutomaticoActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 180, 40));
+        jPanel4.add(cmdAutomatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 180, 40));
 
         cmdRepetido.setText("Numero Repetido");
+        cmdRepetido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdRepetidoActionPerformed(evt);
+            }
+        });
         jPanel4.add(cmdRepetido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 180, 40));
 
         cmdBorrar.setText("Borrar");
@@ -185,7 +190,7 @@ double n;
         // TODO add your handling code here:
     }//GEN-LAST:event_cmdManualActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void cmdAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAutomaticoActionPerformed
 double n, f;
     if(txtLongitud.getText().trim().isEmpty()){
       JOptionPane.showMessageDialog(this,"Digite la longitud del vector","Error",JOptionPane.ERROR_MESSAGE);
@@ -206,7 +211,7 @@ double n, f;
       JOptionPane.showMessageDialog(this,"Vector llenado con éxito");  
     }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_cmdAutomaticoActionPerformed
 
     private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
 if(txtLongitud.getText().trim().isEmpty()){
@@ -229,6 +234,25 @@ else{
     txtLongitud.requestFocusInWindow();
         // TODO add your handling code here:
     }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void cmdRepetidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRepetidoActionPerformed
+double contador=1, numr=0;
+        for (int i = 0; i < v.length; i++) {
+            for (int j = 0; j < v.length; j++) {
+           if(v[i]==v[j]&&(i!=j)){
+               contador=contador+1;
+               numr=v[i];
+           }     
+          }
+        }
+   if(contador>1){
+       txtResultado.append("Número más repetido "+numr);
+   } 
+   else{
+       txtResultado.append("No hay número repetido"); 
+   }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdRepetidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,12 +290,12 @@ else{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdAutomatico;
     private javax.swing.JButton cmdBorrar;
     private javax.swing.JButton cmdCrear;
     private javax.swing.JButton cmdManual;
     private javax.swing.JButton cmdMostrar;
     private javax.swing.JButton cmdRepetido;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
